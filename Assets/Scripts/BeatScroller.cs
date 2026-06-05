@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class BeatScroller : MonoBehaviour
 {
+    [Header("BPMSettings")]
     public float beatTempo;
     public bool hasStarted;
 

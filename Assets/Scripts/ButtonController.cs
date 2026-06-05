@@ -4,6 +4,7 @@ using UnityEngine.InputSystem.Controls;
 
 public class ButtonController : MonoBehaviour
 {
+    [Header("ArrowSettings")]
     private SpriteRenderer spriteRenderer;
     public Sprite defaultImage;
     public Sprite pressedImage;
