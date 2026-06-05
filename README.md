@@ -1,1 +1,28 @@
-# SRJ_BrawlClub_FinalProject
+# Relatório
+## Tema do Jogo: Rhythm Game
+O tema do jogo vai ser um jogo "Rhythm Game" "Multiplayer" com limite de dois jogadores, o jogo seria por turnos onde o objetivo do jogo é acertar nas notas musicais com a maior precisão possível, acumulando pontuação ao longo de cada música para vencer o adversário.
+
+Para fazer este jogo ser um "Turn Based" decidi fazer diferente dos jogos tradicionais de ritmo onde ambos os jogadores jogam em simultâneo, e decidi fazer a música ser dividida em secções, onde os jogadores alternam entre si, ou seja, o jogador 1 joga a primeira secção, o jogador 2 joga a segunda, e assim sucessivamente até ao fim da música.
+
+### How is the Gameplay? 
+Em termos de "gameplay" o ecrã do jogo apresentaria quatro setas ou cubos com diferentes cores, onde esses representariam (esquerda, baixo, cima e direita), posicionadas na zona superior do ecrã. Durante o turno de um jogador, notas correspondentes a essas setas ou cubos com as cores descem pelo ecrã em sincronização com a música. O jogador deverá pressionar a tecla correta no momento em que a nota atinge a zona de impacto. Consoante a precisão do "timing", a jogada é classificada como (Perfect, Great, Good ou Miss), cada uma com uma pontuação diferente associada.
+
+Quando a secção de um jogador termina, o controlo passa automaticamente ao adversário, que joga a secção seguinte da mesma música. No final, as pontuações totais são comparadas e o jogador com maior pontuação será declarado vencedor.
+
+## Desenvolvimento do Rhythm Game
+
+Antes de desenvolver o jogo comecei pesquisar no YouTube tutoriais de como fazer um "rhythm game" no Unity, onde encontrei uma série do canal "gamesplusjames" chamada "How To Make a Rhythm Game". Decidi seguir esta série pois falava de exatamente o que eu precisava, desde o sistema de notas, à música, ao "score" e ao "timing".
+
+Comecei então por ver o primeiro vídeo da série que fala-va sobre fazer as notas aparecerem e serem detetadas pelo jogador. Segui então o tutorial e criei o **`ButtonController`** que trata das setas fixas no fundo do ecrã, mudando o sprite para o estado pressionado quando o jogador carrega na tecla correspondente e voltando ao normal quando solta, dando "feedback" visual. Criei também o **`NoteObject`** com a lógica que detecta quando a nota entra e sai da zona do "Activator"(Vou falar sobre oque é o Activator mais á frente) através dos "triggers", controlando a variável `canBePressed`. No final quando fui testar deparei-me com um erro, este erro era um erro muito comum em tutoriais antigos de Unity, pois estes videos usam o sistema de input antigo do Unity e como o meu projeto estava configurado para usar o **New Input System** estava a dar este erro. Decidi então atualizar todos os "scripts" de forma a funcionar com o novo InputSystem onde, por exemplo, troca-va o `Input.GetKeyDown(KeyCode.E)` por `Keyboard.current.eKey.wasPressedThisFrame` e usaria `KeyControl` para detetar as teclas.
+
+Com o input a funcionar avancei para o segundo vídeo que fala-va sobre a parte de tocar a música e detetar quando o jogador falhava uma nota. Aqui criei o "script" **`BeatScroller`** sendo este o responsável por mover as notas pelo ecrã em sincronização com o "BPM" da música, convertendo o valor de batidas por minuto para batidas por segundo e movendo tudo no eixo Y a cada frame, só começando quando o jogador carrega em qualquer tecla. Completei também o **`GameManager`** com a parte do `startPlaying` e do `theMusic` para a música começar ao mesmo tempo que o scroll, e adicionei ao **`NoteObject`** a lógica do Miss, onde se o jogador não carregar a tempo a nota é registada como falhada.
+
+De seguida comecei por fazer o sistema de "score" e multiplicadores, onde desenvolvi a maior parte do **`GameManager`**. Aqui implementei o `currentScore`, o `currentMultiplier` e o "array" de `multiplierThresholds`, e criei tambem as funções `NormalHit()`, `GoodHit()` e `PerfectHit()` que recebem chamadas do `NoteObject` para atualizar os valores, onde o multiplicador vai subindo com hits consecutivos e volta a 1 quando o jogador falha uma nota. 
+
+Por fim comecei por fazer o sistema de "timing" e encontrei outro problema, desta vez no sistema de "timing". Não conseguia fazer **Perfect** nem **Great** independentemente de quando carregava na tecla, o resultado era sempre um hit normal (Good). Ao analisar o código apercebi-me que o cálculo da distância estava a medir a posição Y da nota relativamente ao `Y=0` do mundo, ou seja, como as notas nunca passavam pelo `Y=0` do mundo a distância era sempre grande e o resultado era sempre Normal(Good). A solução que eu encontrei para este problema foi adicionar uma referência a um objeto cujo o nome é **Activator**, que está posicionado na zona onde o jogador deve acertar as notas, e este mede tambem a distância entre a nota e o objecto em vez do centro do mundo, corrigindo este erro e agora o Sistema de particulas e os Sprites de **Good**, **Perfect** e **Great**já funcionavam da forma correta. Nesta fase completei também o **`NoteObject`** com toda a lógica de distância e criei o **`EffectObject`**, um script simples que destrói os efeitos visuais de feedback ao fim de um tempo.
+
+### Links
+- Tutorial #1 - Hitting Notes: https://youtu.be/cZzf1FQQFA0?si=R0RIc8C4NvSE4Q_K
+- Tutorial #2 - Playing Music & Missing Notes: https://youtu.be/PMfhS-kEvc0?si=CODBnMd0zWApVqDQ
+- Tutorial #3 - Score and Multipliers: https://youtu.be/dV9rdTlMHxs?si=ibZkLReV8k0K1f3F
+- Tutorial #4 - Timing Hits: https://youtu.be/Oi0tT7QnFhs?si=jHQqH1h6GW8x2qS2
