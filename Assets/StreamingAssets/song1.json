@@ -1,128 +1,92 @@
 {
     "notes": [
         {
-            "time": 0.85,
-            "key": "Left"
-        },
-        {
-            "time": 1.35,
-            "key": "Right"
-        },
-        {
-            "time": 1.85,
-            "key": "Up"
-        },
-        {
-            "time": 2.35,
+            "time": 5.5,
             "key": "Down"
         },
         {
-            "time": 2.85,
-            "key": "Left"
-        },
-        {
-            "time": 3.35,
-            "key": "Down"
-        },
-        {
-            "time": 3.85,
-            "key": "Up"
-        },
-        {
-            "time": 4.35,
+            "time": 6.0,
             "key": "Right"
         },
         {
-            "time": 4.85,
+            "time": 6.5,
             "key": "Left"
         },
         {
-            "time": 5.35,
-            "key": "Right"
+            "time": 7.0,
+            "key": "Left"
         },
         {
-            "time": 5.85,
+            "time": 7.5,
             "key": "Up"
         },
         {
-            "time": 6.35,
-            "key": "Down"
-        },
-        {
-            "time": 6.85,
-            "key": "Left"
-        },
-        {
-            "time": 7.35,
-            "key": "Down"
-        },
-        {
-            "time": 7.85,
+            "time": 8.0,
             "key": "Up"
         },
         {
-            "time": 8.35,
+            "time": 8.5,
             "key": "Right"
         },
         {
-            "time": 8.85,
-            "key": "Left"
-        },
-        {
-            "time": 9.35,
-            "key": "Right"
-        },
-        {
-            "time": 9.85,
+            "time": 9.0,
             "key": "Up"
         },
         {
-            "time": 10.35,
+            "time": 9.5,
             "key": "Down"
         },
         {
-            "time": 10.85,
+            "time": 10.0,
             "key": "Left"
         },
         {
-            "time": 11.35,
+            "time": 10.5,
             "key": "Down"
         },
         {
-            "time": 11.85,
+            "time": 11.0,
             "key": "Up"
         },
         {
-            "time": 12.35,
+            "time": 11.5,
             "key": "Right"
         },
         {
-            "time": 12.85,
+            "time": 12.0,
             "key": "Left"
         },
         {
-            "time": 13.35,
+            "time": 12.5,
             "key": "Right"
         },
         {
-            "time": 13.85,
+            "time": 13.0,
             "key": "Up"
         },
         {
-            "time": 14.35,
+            "time": 13.5,
             "key": "Down"
         },
         {
-            "time": 14.85,
+            "time": 14.0,
             "key": "Left"
+        },
+        {
+            "time": 14.5,
+            "key": "Down"
+        },
+        {
+            "time": 15.0,
+            "key": "Up"
         },
         {
             "time": 15.5,
-            "key": "Up"
+            "key": "Right"
         },
         {
             "time": 16.0,
-            "key": "Right"
+            "key": "Left"
         },
         {
             "time": 16.5,
@@ -130,27 +94,27 @@
         },
         {
             "time": 17.0,
-            "key": "Down"
-        },
-        {
-            "time": 17.5,
             "key": "Up"
         },
         {
-            "time": 18.0,
+            "time": 17.5,
             "key": "Down"
+        },
+        {
+            "time": 18.0,
+            "key": "Left"
         },
         {
             "time": 18.5,
-            "key": "Right"
-        },
-        {
-            "time": 19.0,
             "key": "Down"
         },
         {
+            "time": 19.0,
+            "key": "Up"
+        },
+        {
             "time": 19.5,
-            "key": "Left"
+            "key": "Right"
         },
         {
             "time": 20.0,
@@ -158,35 +122,35 @@
         },
         {
             "time": 20.5,
-            "key": "Left"
+            "key": "Right"
         },
         {
             "time": 21.0,
-            "key": "Left"
-        },
-        {
-            "time": 21.5,
             "key": "Up"
         },
         {
-            "time": 22.0,
-            "key": "Right"
-        },
-        {
-            "time": 22.5,
-            "key": "Left"
-        },
-        {
-            "time": 23.0,
-            "key": "Left"
-        },
-        {
-            "time": 23.5,
+            "time": 21.5,
             "key": "Down"
         },
         {
-            "time": 24.0,
+            "time": 22.0,
+            "key": "Left"
+        },
+        {
+            "time": 22.5,
+            "key": "Down"
+        },
+        {
+            "time": 23.0,
+            "key": "Up"
+        },
+        {
+            "time": 23.5,
             "key": "Right"
+        },
+        {
+            "time": 24.0,
+            "key": "Left"
         },
         {
             "time": 24.5,
@@ -198,43 +162,627 @@
         },
         {
             "time": 25.5,
-            "key": "Right"
-        },
-        {
-            "time": 26.0,
-            "key": "Right"
-        },
-        {
-            "time": 26.5,
-            "key": "Right"
-        },
-        {
-            "time": 27.0,
-            "key": "Left"
-        },
-        {
-            "time": 27.5,
-            "key": "Left"
-        },
-        {
-            "time": 28.0,
-            "key": "Right"
-        },
-        {
-            "time": 28.5,
-            "key": "Left"
-        },
-        {
-            "time": 29.0,
             "key": "Down"
         },
         {
-            "time": 29.5,
+            "time": 26.0,
+            "key": "Left"
+        },
+        {
+            "time": 26.5,
+            "key": "Down"
+        },
+        {
+            "time": 27.0,
             "key": "Up"
+        },
+        {
+            "time": 27.5,
+            "key": "Right"
+        },
+        {
+            "time": 28.0,
+            "key": "Left"
+        },
+        {
+            "time": 28.5,
+            "key": "Right"
+        },
+        {
+            "time": 29.0,
+            "key": "Up"
+        },
+        {
+            "time": 29.5,
+            "key": "Down"
         },
         {
             "time": 30.0,
             "key": "Left"
+        },
+        {
+            "time": 30.5,
+            "key": "Down"
+        },
+        {
+            "time": 31.0,
+            "key": "Up"
+        },
+        {
+            "time": 31.5,
+            "key": "Right"
+        },
+        {
+            "time": 32.0,
+            "key": "Left"
+        },
+        {
+            "time": 32.5,
+            "key": "Right"
+        },
+        {
+            "time": 33.0,
+            "key": "Up"
+        },
+        {
+            "time": 33.5,
+            "key": "Down"
+        },
+        {
+            "time": 34.0,
+            "key": "Left"
+        },
+        {
+            "time": 34.5,
+            "key": "Down"
+        },
+        {
+            "time": 35.0,
+            "key": "Up"
+        },
+        {
+            "time": 35.5,
+            "key": "Right"
+        },
+        {
+            "time": 36.0,
+            "key": "Left"
+        },
+        {
+            "time": 36.5,
+            "key": "Right"
+        },
+        {
+            "time": 37.0,
+            "key": "Up"
+        },
+        {
+            "time": 37.5,
+            "key": "Down"
+        },
+        {
+            "time": 38.0,
+            "key": "Left"
+        },
+        {
+            "time": 38.5,
+            "key": "Down"
+        },
+        {
+            "time": 39.0,
+            "key": "Up"
+        },
+        {
+            "time": 39.5,
+            "key": "Right"
+        },
+        {
+            "time": 40.0,
+            "key": "Left"
+        },
+        {
+            "time": 40.5,
+            "key": "Right"
+        },
+        {
+            "time": 41.0,
+            "key": "Up"
+        },
+        {
+            "time": 41.5,
+            "key": "Down"
+        },
+        {
+            "time": 42.0,
+            "key": "Left"
+        },
+        {
+            "time": 42.5,
+            "key": "Down"
+        },
+        {
+            "time": 43.0,
+            "key": "Up"
+        },
+        {
+            "time": 43.5,
+            "key": "Right"
+        },
+        {
+            "time": 44.0,
+            "key": "Left"
+        },
+        {
+            "time": 44.5,
+            "key": "Right"
+        },
+        {
+            "time": 45.0,
+            "key": "Up"
+        },
+        {
+            "time": 45.5,
+            "key": "Down"
+        },
+        {
+            "time": 46.0,
+            "key": "Left"
+        },
+        {
+            "time": 46.5,
+            "key": "Down"
+        },
+        {
+            "time": 47.0,
+            "key": "Up"
+        },
+        {
+            "time": 47.5,
+            "key": "Right"
+        },
+        {
+            "time": 48.0,
+            "key": "Left"
+        },
+        {
+            "time": 48.5,
+            "key": "Right"
+        },
+        {
+            "time": 49.0,
+            "key": "Up"
+        },
+        {
+            "time": 49.5,
+            "key": "Down"
+        },
+        {
+            "time": 50.0,
+            "key": "Left"
+        },
+        {
+            "time": 50.5,
+            "key": "Down"
+        },
+        {
+            "time": 51.0,
+            "key": "Right"
+        },
+        {
+            "time": 51.5,
+            "key": "Left"
+        },
+        {
+            "time": 52.0,
+            "key": "Right"
+        },
+        {
+            "time": 52.5,
+            "key": "Right"
+        },
+        {
+            "time": 53.0,
+            "key": "Up"
+        },
+        {
+            "time": 53.5,
+            "key": "Up"
+        },
+        {
+            "time": 54.0,
+            "key": "Up"
+        },
+        {
+            "time": 54.5,
+            "key": "Right"
+        },
+        {
+            "time": 55.0,
+            "key": "Right"
+        },
+        {
+            "time": 55.5,
+            "key": "Down"
+        },
+        {
+            "time": 56.0,
+            "key": "Up"
+        },
+        {
+            "time": 56.5,
+            "key": "Right"
+        },
+        {
+            "time": 57.0,
+            "key": "Right"
+        },
+        {
+            "time": 57.5,
+            "key": "Down"
+        },
+        {
+            "time": 58.0,
+            "key": "Up"
+        },
+        {
+            "time": 58.5,
+            "key": "Down"
+        },
+        {
+            "time": 59.0,
+            "key": "Right"
+        },
+        {
+            "time": 59.5,
+            "key": "Right"
+        },
+        {
+            "time": 60.0,
+            "key": "Right"
+        },
+        {
+            "time": 60.5,
+            "key": "Left"
+        },
+        {
+            "time": 61.0,
+            "key": "Down"
+        },
+        {
+            "time": 61.5,
+            "key": "Down"
+        },
+        {
+            "time": 62.0,
+            "key": "Up"
+        },
+        {
+            "time": 62.5,
+            "key": "Down"
+        },
+        {
+            "time": 63.0,
+            "key": "Down"
+        },
+        {
+            "time": 63.5,
+            "key": "Right"
+        },
+        {
+            "time": 64.0,
+            "key": "Left"
+        },
+        {
+            "time": 64.5,
+            "key": "Up"
+        },
+        {
+            "time": 65.0,
+            "key": "Up"
+        },
+        {
+            "time": 65.5,
+            "key": "Down"
+        },
+        {
+            "time": 66.0,
+            "key": "Down"
+        },
+        {
+            "time": 66.5,
+            "key": "Down"
+        },
+        {
+            "time": 67.0,
+            "key": "Up"
+        },
+        {
+            "time": 67.5,
+            "key": "Down"
+        },
+        {
+            "time": 68.0,
+            "key": "Right"
+        },
+        {
+            "time": 68.5,
+            "key": "Left"
+        },
+        {
+            "time": 69.0,
+            "key": "Up"
+        },
+        {
+            "time": 69.5,
+            "key": "Down"
+        },
+        {
+            "time": 70.0,
+            "key": "Up"
+        },
+        {
+            "time": 70.5,
+            "key": "Down"
+        },
+        {
+            "time": 71.0,
+            "key": "Right"
+        },
+        {
+            "time": 71.5,
+            "key": "Left"
+        },
+        {
+            "time": 72.0,
+            "key": "Up"
+        },
+        {
+            "time": 72.5,
+            "key": "Up"
+        },
+        {
+            "time": 73.0,
+            "key": "Left"
+        },
+        {
+            "time": 73.5,
+            "key": "Left"
+        },
+        {
+            "time": 74.0,
+            "key": "Up"
+        },
+        {
+            "time": 74.5,
+            "key": "Left"
+        },
+        {
+            "time": 75.0,
+            "key": "Up"
+        },
+        {
+            "time": 75.5,
+            "key": "Right"
+        },
+        {
+            "time": 76.0,
+            "key": "Right"
+        },
+        {
+            "time": 76.5,
+            "key": "Right"
+        },
+        {
+            "time": 77.0,
+            "key": "Up"
+        },
+        {
+            "time": 77.5,
+            "key": "Left"
+        },
+        {
+            "time": 78.0,
+            "key": "Left"
+        },
+        {
+            "time": 78.5,
+            "key": "Right"
+        },
+        {
+            "time": 79.0,
+            "key": "Right"
+        },
+        {
+            "time": 79.5,
+            "key": "Up"
+        },
+        {
+            "time": 80.0,
+            "key": "Right"
+        },
+        {
+            "time": 80.5,
+            "key": "Up"
+        },
+        {
+            "time": 81.0,
+            "key": "Right"
+        },
+        {
+            "time": 81.5,
+            "key": "Left"
+        },
+        {
+            "time": 82.0,
+            "key": "Left"
+        },
+        {
+            "time": 82.5,
+            "key": "Up"
+        },
+        {
+            "time": 83.0,
+            "key": "Up"
+        },
+        {
+            "time": 83.5,
+            "key": "Up"
+        },
+        {
+            "time": 84.0,
+            "key": "Left"
+        },
+        {
+            "time": 84.5,
+            "key": "Right"
+        },
+        {
+            "time": 85.0,
+            "key": "Right"
+        },
+        {
+            "time": 85.5,
+            "key": "Up"
+        },
+        {
+            "time": 86.0,
+            "key": "Left"
+        },
+        {
+            "time": 86.5,
+            "key": "Up"
+        },
+        {
+            "time": 87.0,
+            "key": "Right"
+        },
+        {
+            "time": 87.5,
+            "key": "Up"
+        },
+        {
+            "time": 88.0,
+            "key": "Up"
+        },
+        {
+            "time": 88.5,
+            "key": "Left"
+        },
+        {
+            "time": 89.0,
+            "key": "Left"
+        },
+        {
+            "time": 89.5,
+            "key": "Left"
+        },
+        {
+            "time": 90.0,
+            "key": "Left"
+        },
+        {
+            "time": 90.5,
+            "key": "Up"
+        },
+        {
+            "time": 91.0,
+            "key": "Down"
+        },
+        {
+            "time": 91.5,
+            "key": "Up"
+        },
+        {
+            "time": 92.0,
+            "key": "Left"
+        },
+        {
+            "time": 92.5,
+            "key": "Down"
+        },
+        {
+            "time": 93.0,
+            "key": "Down"
+        },
+        {
+            "time": 93.5,
+            "key": "Right"
+        },
+        {
+            "time": 94.0,
+            "key": "Up"
+        },
+        {
+            "time": 94.5,
+            "key": "Up"
+        },
+        {
+            "time": 95.0,
+            "key": "Up"
+        },
+        {
+            "time": 95.5,
+            "key": "Up"
+        },
+        {
+            "time": 96.0,
+            "key": "Down"
+        },
+        {
+            "time": 96.5,
+            "key": "Left"
+        },
+        {
+            "time": 97.0,
+            "key": "Left"
+        },
+        {
+            "time": 97.5,
+            "key": "Right"
+        },
+        {
+            "time": 98.0,
+            "key": "Up"
+        },
+        {
+            "time": 98.5,
+            "key": "Up"
+        },
+        {
+            "time": 99.0,
+            "key": "Up"
+        },
+        {
+            "time": 99.5,
+            "key": "Down"
+        },
+        {
+            "time": 100.0,
+            "key": "Left"
+        },
+        {
+            "time": 100.5,
+            "key": "Right"
+        },
+        {
+            "time": 101.0,
+            "key": "Left"
+        },
+        {
+            "time": 101.5,
+            "key": "Down"
+        },
+        {
+            "time": 102.0,
+            "key": "Left"
+        },
+        {
+            "time": 102.5,
+            "key": "Right"
+        },
+        {
+            "time": 103.0,
+            "key": "Down"
         }
     ]
 }
