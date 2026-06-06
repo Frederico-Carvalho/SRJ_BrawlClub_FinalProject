@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI MultiText;
 
+    [Header("SpawnSettings")]
+    public NoteSpawner theNoteSpawner;
+
     public float totalNotes;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +51,13 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
+                if (Keyboard.current.anyKey.wasPressedThisFrame)
+                {
+                    startPlaying = true;
+                    theBS.hasStarted = true;
+                    theMusic.Play();
+                    theNoteSpawner.StartSpawning();
+                }
 
                 theMusic.Play();
             }

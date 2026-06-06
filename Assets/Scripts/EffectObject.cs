@@ -7,12 +7,12 @@ public class EffectObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Object.Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Object.Destroy(gameObject, lifetime);
+        
     }
 }

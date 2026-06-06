@@ -13,27 +13,26 @@ public class NoteObject : MonoBehaviour
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     public Transform activator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private CharacterAnimator characterAnimator;
+
     void Start()
     {
-        
+        characterAnimator = Object.FindFirstObjectByType<CharacterAnimator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         KeyControl key = Keyboard.current[keytoPress];
-
         if (key.wasPressedThisFrame)
         {
-            if(canBePressed)
+            if (canBePressed)
             {
                 obtained = true;
-              
                 gameObject.SetActive(false);
 
-                float distance = Mathf.Abs(transform.position.y - activator.position.y);
+                characterAnimator.PlayHit(keytoPress);
 
+                float distance = Mathf.Abs(transform.position.y - activator.position.y);
                 if (distance > 0.25f)
                 {
                     Debug.Log("hit");
@@ -55,7 +54,6 @@ public class NoteObject : MonoBehaviour
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
                     Debug.Log("Distance: " + distance);
                 }
-
             }
         }
     }
@@ -67,18 +65,18 @@ public class NoteObject : MonoBehaviour
             canBePressed = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Activator")
         {
             canBePressed = false;
-
             if (!obtained)
             {
                 GameManager.instance.NoteMissed();
+                characterAnimator.PlayMiss();
                 Instantiate(missEffect, transform.position, missEffect.transform.rotation);
             }
-
         }
     }
 }

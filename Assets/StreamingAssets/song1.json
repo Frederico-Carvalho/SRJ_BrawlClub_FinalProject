@@ -1,0 +1,240 @@
+{
+    "notes": [
+        {
+            "time": 0.85,
+            "key": "Left"
+        },
+        {
+            "time": 1.35,
+            "key": "Right"
+        },
+        {
+            "time": 1.85,
+            "key": "Up"
+        },
+        {
+            "time": 2.35,
+            "key": "Down"
+        },
+        {
+            "time": 2.85,
+            "key": "Left"
+        },
+        {
+            "time": 3.35,
+            "key": "Down"
+        },
+        {
+            "time": 3.85,
+            "key": "Up"
+        },
+        {
+            "time": 4.35,
+            "key": "Right"
+        },
+        {
+            "time": 4.85,
+            "key": "Left"
+        },
+        {
+            "time": 5.35,
+            "key": "Right"
+        },
+        {
+            "time": 5.85,
+            "key": "Up"
+        },
+        {
+            "time": 6.35,
+            "key": "Down"
+        },
+        {
+            "time": 6.85,
+            "key": "Left"
+        },
+        {
+            "time": 7.35,
+            "key": "Down"
+        },
+        {
+            "time": 7.85,
+            "key": "Up"
+        },
+        {
+            "time": 8.35,
+            "key": "Right"
+        },
+        {
+            "time": 8.85,
+            "key": "Left"
+        },
+        {
+            "time": 9.35,
+            "key": "Right"
+        },
+        {
+            "time": 9.85,
+            "key": "Up"
+        },
+        {
+            "time": 10.35,
+            "key": "Down"
+        },
+        {
+            "time": 10.85,
+            "key": "Left"
+        },
+        {
+            "time": 11.35,
+            "key": "Down"
+        },
+        {
+            "time": 11.85,
+            "key": "Up"
+        },
+        {
+            "time": 12.35,
+            "key": "Right"
+        },
+        {
+            "time": 12.85,
+            "key": "Left"
+        },
+        {
+            "time": 13.35,
+            "key": "Right"
+        },
+        {
+            "time": 13.85,
+            "key": "Up"
+        },
+        {
+            "time": 14.35,
+            "key": "Down"
+        },
+        {
+            "time": 14.85,
+            "key": "Left"
+        },
+        {
+            "time": 15.5,
+            "key": "Up"
+        },
+        {
+            "time": 16.0,
+            "key": "Right"
+        },
+        {
+            "time": 16.5,
+            "key": "Right"
+        },
+        {
+            "time": 17.0,
+            "key": "Down"
+        },
+        {
+            "time": 17.5,
+            "key": "Up"
+        },
+        {
+            "time": 18.0,
+            "key": "Down"
+        },
+        {
+            "time": 18.5,
+            "key": "Right"
+        },
+        {
+            "time": 19.0,
+            "key": "Down"
+        },
+        {
+            "time": 19.5,
+            "key": "Left"
+        },
+        {
+            "time": 20.0,
+            "key": "Left"
+        },
+        {
+            "time": 20.5,
+            "key": "Left"
+        },
+        {
+            "time": 21.0,
+            "key": "Left"
+        },
+        {
+            "time": 21.5,
+            "key": "Up"
+        },
+        {
+            "time": 22.0,
+            "key": "Right"
+        },
+        {
+            "time": 22.5,
+            "key": "Left"
+        },
+        {
+            "time": 23.0,
+            "key": "Left"
+        },
+        {
+            "time": 23.5,
+            "key": "Down"
+        },
+        {
+            "time": 24.0,
+            "key": "Right"
+        },
+        {
+            "time": 24.5,
+            "key": "Right"
+        },
+        {
+            "time": 25.0,
+            "key": "Up"
+        },
+        {
+            "time": 25.5,
+            "key": "Right"
+        },
+        {
+            "time": 26.0,
+            "key": "Right"
+        },
+        {
+            "time": 26.5,
+            "key": "Right"
+        },
+        {
+            "time": 27.0,
+            "key": "Left"
+        },
+        {
+            "time": 27.5,
+            "key": "Left"
+        },
+        {
+            "time": 28.0,
+            "key": "Right"
+        },
+        {
+            "time": 28.5,
+            "key": "Left"
+        },
+        {
+            "time": 29.0,
+            "key": "Down"
+        },
+        {
+            "time": 29.5,
+            "key": "Up"
+        },
+        {
+            "time": 30.0,
+            "key": "Left"
+        }
+    ]
+}
