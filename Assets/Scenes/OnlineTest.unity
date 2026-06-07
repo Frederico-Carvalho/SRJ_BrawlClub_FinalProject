@@ -956,8 +956,8 @@ MonoBehaviour:
   missEffectP2: {fileID: 3608616180165403435, guid: 038351e672340364a9b07d9bf74eb12d, type: 3}
   endGamePanel: {fileID: 140026444}
   gameOverText: {fileID: 1990839120}
-  finalScoreTextP1: {fileID: 111241418}
-  finalScoreTextP2: {fileID: 1757376041}
+  finalScoreTextP1: {fileID: 562797855}
+  finalScoreTextP2: {fileID: 1584523581}
   winnerText: {fileID: 177111089}
 --- !u!4 &140728372
 Transform:
