@@ -848,8 +848,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1990839119}
-  - {fileID: 1584523580}
   - {fileID: 562797854}
+  - {fileID: 1584523580}
   - {fileID: 177111088}
   - {fileID: 1916492147}
   m_Father: {fileID: 215791531}
@@ -956,8 +956,8 @@ MonoBehaviour:
   missEffectP2: {fileID: 3608616180165403435, guid: 038351e672340364a9b07d9bf74eb12d, type: 3}
   endGamePanel: {fileID: 140026444}
   gameOverText: {fileID: 1990839120}
-  finalScoreTextP1: {fileID: 1584523581}
-  finalScoreTextP2: {fileID: 562797855}
+  finalScoreTextP1: {fileID: 111241418}
+  finalScoreTextP2: {fileID: 1757376041}
   winnerText: {fileID: 177111089}
 --- !u!4 &140728372
 Transform:
@@ -2487,7 +2487,7 @@ GameObject:
   - component: {fileID: 562797856}
   - component: {fileID: 562797855}
   m_Layer: 5
-  m_Name: FinalScoreTextP2
+  m_Name: FinalScoreTextP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4317,7 +4317,7 @@ GameObject:
   - component: {fileID: 1584523582}
   - component: {fileID: 1584523581}
   m_Layer: 5
-  m_Name: FinalScoreTextP1
+  m_Name: FinalScoreTextP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
