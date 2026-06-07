@@ -2,6 +2,7 @@
 <p align="center">
   <img src="READMEImages/Logo.png" width="600"/>
 </p>
+
 ## Tema do Jogo: Rhythm Game
 
 O tema do jogo é um "Rhythm Game" multiplayer com limite de dois jogadores, onde o objetivo é acertar nas notas musicais com a maior precisão possível, acumulando pontuação ao longo de cada música para vencer o adversário.
@@ -15,7 +16,7 @@ Embora eu queira que seja um jogo de ação Host/Cliente, eu não sei se conta p
 Em termos de "gameplay", cada lado do ecrã apresenta quatro setas com diferentes cores representando as direções (esquerda, baixo, cima e direita) posicionadas na zona superior. Durante o jogo, notas correspondentes a essas setas sobem pelo ecrã em sincronização com a música. O jogador deverá pressionar a tecla correta no momento em que a nota atinge a zona de impacto. Consoante a precisão do "timing", a jogada é classificada como Perfect, Great, Good ou Miss, cada uma com uma pontuação diferente associada. O multiplicador de score vai subindo com hits consecutivos e volta a 1 quando o jogador falha uma nota.
 
 <p align="center">
-  <img src="ReadMeImages/Setas.png" width="600"/>
+  <img src="READMEImages/Setas.png" width="600"/>
 </p>
 
 ## Desenvolvimento do Rhythm Game
@@ -26,7 +27,7 @@ Antes de desenvolver o jogo comecei pesquisar no YouTube tutoriais de como fazer
 Após encontrar este tutorial comecei por criar o projeto em si e adicionei um "background" que parece um "sidescroller" de uma discoteca cujo os direito de autor são meus pois foi um "asset" que eu comprei no "itch.io", e pus a animação dele a parecer um "sidescroller" e após ter feito isso comecei então por ver o primeiro vídeo da série que fala-va sobre fazer as notas aparecerem e serem detetadas pelo jogador. Segui então o tutorial e criei o **`ButtonController`** que trata das setas fixas no fundo do ecrã, mudando o sprite para o estado pressionado quando o jogador carrega na tecla correspondente e voltando ao normal quando solta, dando "feedback" visual. Criei também o **`NoteObject`** com a lógica que deteta quando a nota entra e sai da zona do "Activator"(Vou falar sobre oque é o Activator mais á frente) através dos "triggers", controlando a variável `canBePressed`. No final quando fui testar deparei-me com um erro, este erro era um erro muito comum em tutoriais antigos de Unity, pois estes videos usam o sistema de input antigo do Unity e como o meu projeto estava configurado para usar o **New Input System** estava a dar este erro. Decidi então atualizar todos os "scripts" de forma a funcionar com o novo InputSystem onde, por exemplo, troca-va o `Input.GetKeyDown(KeyCode.E)` por `Keyboard.current.eKey.wasPressedThisFrame` e usaria `KeyControl` para detetar as teclas.
 
 <p align="center">
-  <img src="ReadMeImages/Notas.png" width="600"/>
+  <img src="READMEImages/Notas.png" width="600"/>
 </p>
 
 #### Musica & Notas falhadas
@@ -42,7 +43,7 @@ De seguida comecei por fazer o sistema de "score" e multiplicadores, onde desenv
 Por fim comecei por fazer o sistema de "timing" e encontrei outro problema, desta vez no sistema de "timing". Não conseguia fazer **Perfect** nem **Great** independentemente de quando carregava na tecla, o resultado era sempre um hit normal (Good). Ao analisar o código apercebi-me que o cálculo da distância estava a medir a posição Y da nota relativamente ao `Y=0` do mundo, ou seja, como as notas nunca passavam pelo `Y=0` do mundo a distância era sempre grande e o resultado era sempre Normal(Good). A solução que eu encontrei para este problema foi adicionar uma referência a um objeto cujo o nome é **Activator**, que está posicionado na zona onde o jogador deve acertar as notas, e este mede tambem a distância entre a nota e o objecto em vez do centro do mundo, corrigindo este erro e agora o Sistema de particulas e os Sprites de **Good**, **Perfect** e **Great**já funcionavam da forma correta. Nesta fase completei também o **`NoteObject`** com toda a lógica de distância e criei o **`EffectObject`**, um "script" simples que destrói os efeitos visuais de feedback ao fim de um tempo.
 
 <p align="center">
-  <img src="ReadMeImages/SetasComEffects.png" width="600"/>
+  <img src="READMEImages/SetasComEffects.png" width="600"/>
 </p>
 
 #### Personagem e Animações
@@ -52,7 +53,7 @@ Após ter feito o timming das notas darem diferentes valores para o score decidi
 Para ligar as animações ao "gameplay" criei o "script" **`CharacterAnimator`** que recebe chamadas do **`NoteObject`** quando o jogador acerta ou falha uma nota, disparando a animação correta consoante a tecla pressionada. Ao testar deparei-me com dois problemas. O primeiro foi um "NullReferenceException" no **`NoteObject`** porque o `FindObjectOfType<CharacterAnimator>()` não estava a encontrar o "script" na cena, onde eu resolvi adicionando uma verificação de null antes de chamar o **`CharacterAnimator`**. O segundo foi que o personagem estava a ir para a animação de "Left" e voltar ao "Idle" sozinho sem o jogador carregar em nada, pensei que teria sido algum erro no "sprite" das animações onde tinha feito mal e por isso ponha um "sprite" do "Left" no fim da animação mas tava tudo bem, ao fim de algum tempo a analisar o problema melhor, percebi que as transições do "Idle" para os outros estados tinham o "Has Exit Time" ativado, o que fazia com que o "Animator" transitasse automaticamente após um tempo. Depois de desativar o "Has Exit Time" nessas transições o problema ficou resolvido.
 
 <p align="center">
-  <img src="ReadMeImages/AnimControllerPlayer.png" width="600"/>
+  <img src="READMEImages/AnimControllerPlayer.png" width="600"/>
 </p>
 
 #### Sistema de "Spawn" de Notas e Chart JSON
@@ -61,14 +62,14 @@ Com o personagem a funcionar corretamente avancei para o sistema de spawn das no
 
 Criei então um ficheiro JSON cujo o nome é `song1.json` na pasta `StreamingAssets` do projeto, que pelo que percebi em uma das minhas pesquisas, esta pasta serve como uma pasta especial do Unity onde os ficheiros são incluídos na "build" exatamente como estão e podem ser lidos em "runtime". O ficheiro tem uma estrutura simples onde cada nota tem um `time` em segundos e uma `key` correspondente à direcção da seta que vai ser "spawnada" nesse tempo, como eu nunca tinha feito nada em JSON decidi usar ajuda de inteligencia artificial para esta parte do projeto, para perceber de forma rápida e fácil como funcionaria isto, ele fez me um ficheiro de exemplo para eu perceber como funcionaria e depois mais a frente eu modifiqueio um bocado para alcançar o resultado que eu queria.
 <p align="center">
-  <img src="ReadMeImages/Json.png" width="600"/>
+  <img src="READMEImages/Json.png" width="600"/>
 </p>
 Para ler o ficheiro e instanciar as notas criei o "script" **`NoteSpawner`** com as classes `NoteData` e `SongData` marcadas com `[System.Serializable]` para o Unity conseguir converter o JSON para objetos C# usando o `JsonUtility.FromJson`(Usei tambem a IA e alguns sites para entender como isto funciona e como usa-lo). Este "script" lê o ficheiro no `Start()`, e no `Update()` vai comparar o tempo atual com o tempo de cada nota menos um `spawnOffset`, que é o tempo de antecedência com que a nota é "spawnada" para ter tempo de subir até ao "Activator". Quando chega o momento certo, instancia o "prefab" correto na posição do "spawn point" correspondente à direcção da nota.
 
 Ao testar deparei-me com dois problemas, onde o primeiro foi que todas as notas estavam a "spawnar" no mesmo sítio, pois so tinha posto um "SpawnPoint" e esqueci-me que tinha de fazer 4 um para cada seta, logo resolvi criando quatro "spawn points" separados na cena alinhados com as quatro setas fixas onde o jogador carrega, ficando assim, cada nota a "spawnar" diretamente acima da seta correspondente. O segundo problema foi que as notas não subiam depois de serem instanciadas, não tava a perceber o porque de isto tar a acontecer, já que tinha estado antes com os "Prefabs" na cena e eles subiam, só após ter dando alguns "Ctrl+Z" para ver se alguma coisa teria mudado que eu nao tenha reparado, deparei-me que quando tava com esses "Prefabs" na "scene" eles eram filhas do  oque resolvi `NoteHolder` que tem o "script" `BeatScroller` sendo oque faz as notas subirem, e quando eu fazia elas "spawnarem" com o "Spawn Point" elas eram criadas fora do `NoteHolder` parando de ser filhas dele, ou seja eu resolvi este problema colocando no script para elas serem criadas dentro do `NoteHolder` para serem logo automaticamente filhas dele e assim terem `BeatScroller`, passando assim a ser movidas corretamente.
 
 <p align="center">
-  <img src="ReadMeImages/ErroDeTaremASpawnarTodosNoMesmoSitio.png" width="600"/>
+  <img src="READMEImages/ErroDeTaremASpawnarTodosNoMesmoSitio.png" width="600"/>
 </p>
 
 De seguida, após ter resolvido aquele problema, liguei o **`NoteSpawner`** ao **`GameManager`**, onde o `GameManager` passa a ser assim o único responsável por detetar o input inicial do jogador e a partir daí chama o `StartSpawning()` do **`NoteSpawner`**, o `hasStarted` do **`BeatScroller`** e o `Play()` do `AudioSource` todos ao mesmo tempo, garantindo que a música, o scroll das notas e o spawn arrancam em simultâneo e não daria problemas futuramente.
@@ -113,7 +114,7 @@ Nesta parte deparei-me com alguns problemas, onde ao tentar usar as ferramentas 
 Ao testar apareceu na consola "Cliente conectado: 1" confirmando que a ligação estava a funcionar. 
 
 <p align="center">
-  <img src="ReadMeImages/JoinOnline.gif" width="600"/>
+  <img src="READMEImages/JoinOnline.gif" width="600"/>
 </p>
 
 ### Split Screen do Player 1/2 e Sincronização do Início do Jogo com ServerRpc e ClientRpc
@@ -133,7 +134,7 @@ Durante esta implementação deparei-me com um aviso na consola `'ServerRpcAttri
 Após resolver o problema do **`ServerRpc`** e do **`ClientRpc`** fui testar e encontrei vários problemas ao mesmo tempo. O primeiro foi que o "input" estava a dar nos dois lados em simultâneo, ou seja, quando carregava nas setas o "input" afetava tanto o lado do Host como o lado do Client. O segundo foi que só o personagem do "Player 2" fazia as animações de "Left", "Right", "Up" e "Down" e o "Player 1" ficava sempre em "idle". O terceiro foi que na "Build", ou seja, no lado do cliente todas as notas davam "Miss" independentemente de quando carregava. E por fim, o quarto foi que as notas só estavam a "spawnar" de um lado e não tavam a "spawnar" no lado do "Player 2".
 
 <p align="center">
-  <img src="ReadMeImages/ErroDeTarAJogarNoPlayer1EOPlayer2SerOAnimado.png" width="600"/>
+  <img src="READMEImages/ErroDeTarAJogarNoPlayer1EOPlayer2SerOAnimado.png" width="600"/>
 </p>
 
 Para resolver o primeiro problema do "input" nos dois lados, tive que adicionar uma variável `isPlayer1` ao `NoteObject` e adicionei uma verificação no `Update()` e no `OnTriggerExit2D` que verifica se `isPlayer1` corresponde a `NetworkManager.Singleton.IsHost`, se não corresponder ignora o "input" completamente, garantindo que cada jogador só interage com as suas próprias notas, onde para fazer com que isto funcionasse tive que duplicar os prefabs das notas criando versões `P1` e `P2` para cada direcção, estas sendo `Left_P1`, `Right_P1`, `Up_P1`, `Down_P1` e `Left_P2`, `Right_P2`, `Up_P2`, `Down_P2`, onde os prefabs `P1` têm o `isPlayer1` ativado e os `P2` têm desativado. Por fim tambem adicionei uma verificação de null ao `NetworkManager.Singleton` para evitar `NullReferenceExceptions` que apareciam quando as notas eram instanciadas antes do *NGO* estar completamente inicializado.
@@ -156,7 +157,7 @@ Mesmo resolvendo esses erros ainda haviam elementos que não estavam a ser sincr
 Inicialmente estava a passar `Key.None` em vez da tecla real para o `PlayHitAnimationClientRpc`, o que fazia com que a animação do Player 2 nunca disparasse corretamente, a solução foi passar a tecla como parâmetro adicional nos `ServerRpcs` de hit e reencaminhá-la para o `ClientRpc`.
 
 <p align="center">
-  <img src="ReadMeImages/TesteMultiplayerAFuncionar.png" width="600"/>
+  <img src="READMEImages/TesteMultiplayerAFuncionar.png" width="600"/>
 </p>
 
 ### Ecrã de Fim de Jogo
@@ -172,7 +173,7 @@ Após ter feito isto tudo fui testar com um amigo meu onde eu mandei lhe uma "bu
 Voltando aos problemas que falei antes, o primeiro erro que eu encontrei foi o erro `[Netcode] [CanStart][Start:Client] Can't start while listening`, este erro aconteceu quando tentei fazer Join pelo Editor onde o problema era que o `NetworkManager` já estava a correr de uma sessão anterior e não pode iniciar duas vezes, nem sei bem se conta como erro acho que foi mais culpa minha por tar a tentar entrar e clicar várias vezes no join e no host. 
 
 <p align="center">
-  <img src="ReadMeImages/ErroCantStartListening.png" width="600"/>
+  <img src="READMEImages/ErroCantStartListening.png" width="600"/>
 </p>
 
 Já o segundo problema foi o erro `Failed to connect to server` onde o meu amigo não conseguia ligar ao meu computador, ao inicio pensei que poderia ser algo do computador em si, e fui pesquisar na net sobre o assunto. Ao fim de muito tempo a tentar perceber o erro desisti de procurar na net oque poderia estar a causar isto e perguntei a inteligencia artificial como poderia resolver este problema, foi algo duro não vou mentir mas ao fim de perguntar e mais perguntas ele deu me a solução certa que foi adicionar `0.0.0.0` como endereço no `StartHost()` antes de iniciar o servidor:
@@ -187,7 +188,7 @@ Ou seja, pelo que eu entendi do que o IA me explicou o `0.0.0.0` faz com que o s
 Durante os testes também notei que havia vários problemas de UI em resoluções diferentes, onde o background ficava mais pequeno no `MainMenu`, o `InputField` ficava maior do que o esperado e alguns elementos ficavam desproporcionais no computador do meu amigo. Estes problemas foram parcialmente resolvidos configurando o **Canvas Scaler** com `Scale With Screen Size`, resolução de referência `1920x1080` e `Match` a `1` (Match Height).
 
 <p align="center">
-  <img src="ReadMeImages/ErroUIAmigo.png" width="600"/>
+  <img src="READMEImages/ErroUIAmigo.png" width="600"/>
 </p>
 
 ### Links
@@ -202,7 +203,7 @@ Durante os testes também notei que havia vários problemas de UI em resoluçõe
 ### Versão Final
 
 <p align="center">
-  <img src="ReadMeImages/FinalResult.gif" width="600"/>
+  <img src="READMEImages/FinalResult.gif" width="600"/>
 </p>
 
 ## Descrição Técnica do que foi Implementado e Técnicas Utilizadas
@@ -238,7 +239,7 @@ Durante os testes também notei que havia vários problemas de UI em resoluçõe
 
 ## Arquitetura de rede
 <p align="center">
-  <img src="ReadMeImages/ArquiteturaDeRede.png" width="600"/>
+  <img src="READMEImages/ArquiteturaDeRede.png" width="600"/>
 </p>
 
 ## Bibliografia
