@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using Unity.Netcode;
 
 public class NoteObject : MonoBehaviour
 {
+    [Header("PlayerSettings")]
+    public bool isPlayer1;
+
     [Header("InputSettings")]
     public bool canBePressed;
     public Key keytoPress;
@@ -13,15 +17,14 @@ public class NoteObject : MonoBehaviour
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     public Transform activator;
 
-    private CharacterAnimator characterAnimator;
-
-    void Start()
-    {
-        characterAnimator = Object.FindFirstObjectByType<CharacterAnimator>();
-    }
+    public CharacterAnimator characterAnimator;
 
     void Update()
     {
+        if (NetworkManager.Singleton == null) return;
+        bool isHost = NetworkManager.Singleton.IsHost;
+        if (isPlayer1 != isHost) return;
+
         KeyControl key = Keyboard.current[keytoPress];
         if (key.wasPressedThisFrame)
         {
@@ -30,29 +33,18 @@ public class NoteObject : MonoBehaviour
                 obtained = true;
                 gameObject.SetActive(false);
 
-                characterAnimator.PlayHit(keytoPress);
-
                 float distance = Mathf.Abs(transform.position.y - activator.position.y);
                 if (distance > 0.25f)
                 {
-                    Debug.Log("hit");
-                    GameManager.instance.NormalHit();
-                    Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
-                    Debug.Log("Distance: " + distance);
+                    GameManager.instance.NormalHitServerRpc(isHost, transform.position, (int)keytoPress);
                 }
                 else if (distance > 0.05f)
                 {
-                    Debug.Log("good hit");
-                    GameManager.instance.GoodHit();
-                    Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
-                    Debug.Log("Distance: " + distance);
+                    GameManager.instance.GoodHitServerRpc(isHost, transform.position, (int)keytoPress);
                 }
                 else
                 {
-                    Debug.Log("Perfect");
-                    GameManager.instance.PerfectHit();
-                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
-                    Debug.Log("Distance: " + distance);
+                    GameManager.instance.PerfectHitServerRpc(isHost, transform.position, (int)keytoPress);
                 }
             }
         }
@@ -73,9 +65,10 @@ public class NoteObject : MonoBehaviour
             canBePressed = false;
             if (!obtained)
             {
-                GameManager.instance.NoteMissed();
-                characterAnimator.PlayMiss();
-                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                if (NetworkManager.Singleton == null) return;
+                bool isHost = NetworkManager.Singleton.IsHost;
+                if (isPlayer1 != isHost) return;
+                GameManager.instance.NoteMissedServerRpc(isHost, transform.position);
             }
         }
     }

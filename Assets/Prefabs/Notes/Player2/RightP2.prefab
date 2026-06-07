@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5284506776353422121}
   - component: {fileID: 6293322861680306700}
   m_Layer: 0
-  m_Name: Red_Direita_Seta
+  m_Name: RightP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

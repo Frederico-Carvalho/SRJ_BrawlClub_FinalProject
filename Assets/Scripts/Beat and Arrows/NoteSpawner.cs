@@ -40,6 +40,9 @@ public class NoteSpawner : MonoBehaviour
     private float songTime = 0f;
     private bool isPlaying = false;
 
+    [Header("AnimatorSettings")]
+    public CharacterAnimator characterAnimator;
+
     void Start()
     {
         LoadChart();
@@ -106,9 +109,12 @@ public class NoteSpawner : MonoBehaviour
 
             GameObject spawnedNote = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
             spawnedNote.transform.SetParent(GameObject.Find("NoteHolder").transform);
+
             NoteObject noteObject = spawnedNote.GetComponent<NoteObject>();
             if (noteObject != null)
             {
+                noteObject.characterAnimator = characterAnimator;
+
                 GameObject activatorObject = GameObject.FindWithTag("Activator");
                 if (activatorObject != null)
                 {
