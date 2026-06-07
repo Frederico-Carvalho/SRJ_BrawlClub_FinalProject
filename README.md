@@ -1,20 +1,21 @@
 # Relatório
 ## Tema do Jogo: Rhythm Game
-O tema do jogo vai ser um jogo "Rhythm Game" "Multiplayer" com limite de dois jogadores, o jogo seria por turnos onde o objetivo do jogo é acertar nas notas musicais com a maior precisão possível, acumulando pontuação ao longo de cada música para vencer o adversário.
+O tema do jogo é um "Rhythm Game" multiplayer com limite de dois jogadores, onde o objetivo é acertar nas notas musicais com a maior precisão possível, acumulando pontuação ao longo de cada música para vencer o adversário.
 
-Para fazer este jogo ser um "Turn Based" decidi fazer diferente dos jogos tradicionais de ritmo onde ambos os jogadores jogam em simultâneo, e decidi fazer a música ser dividida em secções, onde os jogadores alternam entre si, ou seja, o jogador 1 joga a primeira secção, o jogador 2 joga a segunda, e assim sucessivamente até ao fim da música.
+O jogo é um jogo de ação onde os dois jogadores jogam em simultâneo, cada um no seu lado do ecrã. O ecrã está dividido ao meio, onde o lado direito pertence ao Player 1 e o lado esquerdo pertence ao Player 2. Cada jogador tem as suas próprias notas a subir pelo ecrã em sincronização com a música, e tem de carregar nas teclas correspondentes no momento certo. No final da música, os scores dos dois jogadores são comparados e o jogador com maior pontuação é declarado vencedor.
 
-### Como vai ser a Gameplay? 
-Em termos de "gameplay" o ecrã do jogo apresentaria quatro setas ou cubos com diferentes cores, onde esses representariam (esquerda, baixo, cima e direita), posicionadas na zona superior do ecrã. Durante o turno de um jogador, notas correspondentes a essas setas ou cubos com as cores descem pelo ecrã em sincronização com a música. O jogador deverá pressionar a tecla correta no momento em que a nota atinge a zona de impacto. Consoante a precisão do "timing", a jogada é classificada como (Perfect, Great, Good ou Miss), cada uma com uma pontuação diferente associada.
+Embora eu queira que seja um jogo de ação Host/Cliente, eu não sei se conta pois mesmo que os dois jogadores joguem em simultaneo e vejam um ao outro a jogar, nenhum afeta em si o outro so no final do jogo e que a pontuaçao que cada um teve demonstrara quem ganha sendo a unica coisa que afeta assim em especifico. Mesmo tendo esta duvida acho que o jogo estaria na categoria de jogo de ação pois ambos jogam ao mesmo tempo e não por turnos.
 
-Quando a secção de um jogador termina, o controlo passa automaticamente ao adversário, que joga a secção seguinte da mesma música. No final, as pontuações totais são comparadas e o jogador com maior pontuação será declarado vencedor.
+### Como funciona a Gameplay?
+
+Em termos de "gameplay", cada lado do ecrã apresenta quatro setas com diferentes cores representando as direções (esquerda, baixo, cima e direita) posicionadas na zona superior. Durante o jogo, notas correspondentes a essas setas sobem pelo ecrã em sincronização com a música. O jogador deverá pressionar a tecla correta no momento em que a nota atinge a zona de impacto. Consoante a precisão do "timing", a jogada é classificada como Perfect, Great, Good ou Miss, cada uma com uma pontuação diferente associada. O multiplicador de score vai subindo com hits consecutivos e volta a 1 quando o jogador falha uma nota.
 
 ## Desenvolvimento do Rhythm Game
 
 Antes de desenvolver o jogo comecei pesquisar no YouTube tutoriais de como fazer um "rhythm game" no Unity, onde encontrei uma série do canal "gamesplusjames" chamada "How To Make a Rhythm Game". Decidi seguir esta série pois falava de exatamente o que eu precisava, desde o sistema de notas, à música, ao "score" e ao "timing".
 
 #### Tocar Notas
-Após encontrar este tutorial comecei por criar o projeto em si e adicionei um "background" que parece um "sidescroller" de uma discoteca cujo os direito de autor são meus pois foi um "asset" que eu comprei no "itch.io", e pus a animação dele a parecer um "sidescroller" e após ter feito isso comecei então por ver o primeiro vídeo da série que fala-va sobre fazer as notas aparecerem e serem detetadas pelo jogador. Segui então o tutorial e criei o **`ButtonController`** que trata das setas fixas no fundo do ecrã, mudando o sprite para o estado pressionado quando o jogador carrega na tecla correspondente e voltando ao normal quando solta, dando "feedback" visual. Criei também o **`NoteObject`** com a lógica que detecta quando a nota entra e sai da zona do "Activator"(Vou falar sobre oque é o Activator mais á frente) através dos "triggers", controlando a variável `canBePressed`. No final quando fui testar deparei-me com um erro, este erro era um erro muito comum em tutoriais antigos de Unity, pois estes videos usam o sistema de input antigo do Unity e como o meu projeto estava configurado para usar o **New Input System** estava a dar este erro. Decidi então atualizar todos os "scripts" de forma a funcionar com o novo InputSystem onde, por exemplo, troca-va o `Input.GetKeyDown(KeyCode.E)` por `Keyboard.current.eKey.wasPressedThisFrame` e usaria `KeyControl` para detetar as teclas.
+Após encontrar este tutorial comecei por criar o projeto em si e adicionei um "background" que parece um "sidescroller" de uma discoteca cujo os direito de autor são meus pois foi um "asset" que eu comprei no "itch.io", e pus a animação dele a parecer um "sidescroller" e após ter feito isso comecei então por ver o primeiro vídeo da série que fala-va sobre fazer as notas aparecerem e serem detetadas pelo jogador. Segui então o tutorial e criei o **`ButtonController`** que trata das setas fixas no fundo do ecrã, mudando o sprite para o estado pressionado quando o jogador carrega na tecla correspondente e voltando ao normal quando solta, dando "feedback" visual. Criei também o **`NoteObject`** com a lógica que deteta quando a nota entra e sai da zona do "Activator"(Vou falar sobre oque é o Activator mais á frente) através dos "triggers", controlando a variável `canBePressed`. No final quando fui testar deparei-me com um erro, este erro era um erro muito comum em tutoriais antigos de Unity, pois estes videos usam o sistema de input antigo do Unity e como o meu projeto estava configurado para usar o **New Input System** estava a dar este erro. Decidi então atualizar todos os "scripts" de forma a funcionar com o novo InputSystem onde, por exemplo, troca-va o `Input.GetKeyDown(KeyCode.E)` por `Keyboard.current.eKey.wasPressedThisFrame` e usaria `KeyControl` para detetar as teclas.
 
 #### Musica & Notas falhadas
 
@@ -70,7 +71,7 @@ Para instalar o *NGO* fui ao **Window e de seguida ao Package Manager**, adicion
 
 ### Main Menu com Host e Join
 
-Após ter confirgurado o *NGO* comecei a pensar em como iria fazer para os jogadores se conseguirem conectar, começando então por criar uma nova cena chamada `MainMenu` com um **Canvas** que tem um botão de **Host Game** e um botão de **Join Game**. Para o Join fiz também um **InputField** onde o jogador escreve o IP do Host e um botão de **Confirm**, estes dois elementos só vão aparecer quando o jogador clica em **Join Game**, para isso acontecer fiz com que comecem desactivados no `Start()` e só ativem quando o jogador clica em Join.
+Após ter confirgurado o *NGO* comecei a pensar em como iria fazer para os jogadores se conseguirem conectar, começando então por criar uma nova cena chamada `MainMenu` com um **Canvas** que tem um botão de **Host Game** e um botão de **Join Game**. Para o Join fiz também um **InputField** onde o jogador escreve o IP do Host e um botão de **Confirm**, estes dois elementos só vão aparecer quando o jogador clica em **Join Game**, para isso acontecer fiz com que comecem desativados no `Start()` e só ativem quando o jogador clica em Join.
 
 De seguida, comecei por criar um "script" **`NetworkManagerUI`** que servisse para gerir toda a lógica do UI, este "script" tem três funções principais, a  primeira é o `StartHost()` que serve para iniciar o servidor chamando `NetworkManager.Singleton.StartHost()`, em uma das documentações vi que o `NetworkManager.Singleton` é uma instância global única do `NetworkManager` que pode ser acedida de qualquer "script" na cena, depois carrega a "scene" `OnlineTest` usando o `NetworkManager.Singleton.SceneManager.LoadScene()` que é o gestor de cenas do *NGO*, ou seja, carrega as "scenes" de forma sincronizada em todos os clientes em vez de usar o `SceneManager` normal que o Unity usa. Já o `ShowJoinUI()` ativa o `InputField` e o botão de Confirm quando o jogador clica em Join como dito anteriormente, e por fim o `StartClient()` lê o IP que o jogador escreveu no `InputField`, usa o `SetConnectionData()` do `UnityTransport` para definir esse endereço e a porta `7777`(A porta é um canal de comunicação específico do computador, e o `7777` é a porta padrão usada pelo *NGO* para receber ligações), e  chama `NetworkManager.Singleton.StartClient()` para iniciar a ligação. Se o campo estiver vazio usa `127.0.0.1` que é o endereço do próprio computador, útil para testar os dois jogadores no mesmo computador.
 
@@ -79,7 +80,7 @@ Por fim, adicionei as duas cenas (`MainMenu` e `OnlineTest`) ao **Build Profiles
 ### GameManager como NetworkBehaviour
 
 Após ter configurado o main menu, decidi começar por passar o jogo que estava "em modo offline" para "online" onde comecei por tentar usar as ferramentas do *NGO* no `GameManager` onde tambem implentei o `NetworkVariables` e os `RPCs`. 
-Para começar tive que mudar o "script" de `MonoBehaviour` para **`NetworkBehaviour`**, o `NetworkBehaviour` é o equivalente do `MonoBehaviour` mas para objectos de rede, qualquer "script" que precise de comunicar pela rede tem de herdar desta classe. Também tive de adicionar um componente **`NetworkObject`** ao objeto `GameManager` na cena, o **`NetworkObject`** é um componente obrigatório para qualquer `GameObject` que precise de existir na rede, ou seja, sem ele o *NGO* não reconhece o objeto.
+Para começar tive que mudar o "script" de `MonoBehaviour` para **`NetworkBehaviour`**, o `NetworkBehaviour` é o equivalente do `MonoBehaviour` mas para objetos de rede, qualquer "script" que precise de comunicar pela rede tem de herdar desta classe. Também tive de adicionar um componente **`NetworkObject`** ao objeto `GameManager` na cena, o **`NetworkObject`** é um componente obrigatório para qualquer `GameObject` que precise de existir na rede, ou seja, sem ele o *NGO* não reconhece o objeto.
 
 Nesta parte deparei-me com alguns problemas, onde ao tentar usar as ferramentas do *NGO* no `GameManager` apercebi-me que o objeto não tinha o componente `NetworkObject` nem o script herdava de `NetworkBehaviour`, o que fazia com que o *NGO* não reconhecesse o objeto. Após adicionar o `NetworkObject` ao objeto na cena e mudar o script para herdar de `NetworkBehaviour` o erro desapareceu e a ligação passou a funcionar corretamente, mesmo assim para confirmar que os dois clientes estavam-se a ligar corretamente adicionei o `OnClientConnectedCallback` no `OnNetworkSpawn()` que imprime na consola "Cliente conectado: X" sempre que um cliente liga-se na rede, e o `OnNetworkSpawn()` é chamado pelo *NGO* quando o objeto é inicializado na rede, sendo esse o sítio correto para registar eventos de rede em vez do `Start()`. 
 Ao testar apareceu na consola "Cliente conectado: 1" confirmando que a ligação estava a funcionar. 
@@ -125,7 +126,7 @@ Por fim, para o ecrã final do jogo onde mostraria o resultado final de cada "pl
 
 ### Testes com outro Jogador
 
-Após ter feito isto tudo fui testar com um amigo meu onde eu mandei lhe uma "build" e joguei eu pelo editor, tive alguns erros como ele nao conseguir por o meu IP para entrar, mas prontos por fim para testa o jogo então, usei o **Hamachi**, uma aplicação que cria uma **VPN** simulando uma rede LAN virtual e permitindo que dois computadores em redes diferentes se liguem como se estivessem na mesma rede local. O fluxo de teste foi eu a correr o jogo pelo Editor como **Host** e o meu amigo a correr a "Build" como **Client** usando o meu **IPv4** **Hamachi**.
+Após ter feito isto tudo fui testar com um amigo meu onde eu mandei lhe uma "build" e joguei eu pelo editor, tive alguns erros como ele nao conseguir por o meu IP para entrar, mas vou falar disso mais abaixo. Por fim para testar o jogo então, usei o **Hamachi**, uma aplicação que cria uma **VPN** simulando uma rede LAN virtual e permitindo que dois computadores em redes diferentes se liguem como se estivessem na mesma rede local. O fluxo de teste foi eu a correr o jogo pelo Editor como **Host** e o meu amigo a correr a "Build" como **Client** usando o meu **IPv4** **Hamachi**.
 
 Voltando aos problemas que falei antes, o primeiro erro que eu encontrei foi o erro `[Netcode] [CanStart][Start:Client] Can't start while listening`, este erro aconteceu quando tentei fazer Join pelo Editor onde o problema era que o `NetworkManager` já estava a correr de uma sessão anterior e não pode iniciar duas vezes, nem sei bem se conta como erro acho que foi mais culpa minha por tar a tentar entrar e clicar várias vezes no join e no host, já o segundo problema foi o erro `Failed to connect to server` onde o meu amigo não conseguia ligar ao meu computador, ao inicio pensei que poderia ser algo do computador em si, e fui pesquisar na net sobre o assunto. Ao fim de muito tempo a tentar perceber o erro desisti de procurar na net oque poderia estar a causar isto e perguntei a inteligencia artificial como poderia resolver este problema, foi algo duro não vou mentir mas ao fim de perguntar e mais perguntas ele deu me a solução certa que foi adicionar `0.0.0.0` como endereço no `StartHost()` antes de iniciar o servidor:
 
@@ -145,3 +146,38 @@ Durante os testes também notei que havia vários problemas de UI em resoluçõe
 - Documentação oficial — NetworkManager: https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@2.5/manual/components/core/networkmanager.html
 - Code Monkey — Multiplayer Course: https://unitycodemonkey.com/kitchenchaosmultiplayercourse.php
 - Hamachi: https://vpn.net
+
+## Descrição Técnica do que foi Implementado e Técnicas Utilizadas
+
+### Rhythm Game Engine
+- Sistema de notas baseado em prefabs instanciados em runtime a partir de um ficheiro JSON usando `JsonUtility.FromJson` com as classes `NoteData` e `SongData` marcadas com `[System.Serializable]`, guardado na pasta `StreamingAssets` para ser incluído na build e lido através de `File.ReadAllText`
+- Sistema de movimento das notas através do `BeatScroller` que converte o BPM da música em batidas por segundo e move o `NoteHolder` no eixo Y a cada frame, arrastando todas as notas que são suas filhas
+- Sistema de detecção de notas através de `BoxCollider2D` com trigger no `Activator`, controlando a variável `canBePressed` do `NoteObject` através dos eventos `OnTriggerEnter2D` e `OnTriggerExit2D`
+- Sistema de timing com três níveis de precisão — Perfect, Great e Good — calculados através da distância entre a posição Y da nota e a posição Y do `Activator` usando `Mathf.Abs`
+- Sistema de score com multiplicador progressivo baseado em hits consecutivos, usando um array de `multiplierThresholds` para definir quantos hits são necessários para subir de nível
+- `ButtonController` para dar feedback visual ao jogador usando o New Input System com `KeyControl` e `Keyboard.current`
+- `CharacterAnimator` com `Animator Controller` com estados Idle, Left, Right, Up, Down e Missed, controlados por código através de `animator.Play()`
+- `NoteSpawner` que compara o tempo atual com o tempo de cada nota no chart menos um `spawnOffset`, instanciando o prefab correto no spawn point correspondente como filho do `NoteHolder`
+- `GameManager` como ponto central de controlo, responsável por iniciar a música, o `BeatScroller` e o `NoteSpawner` em simultâneo
+
+### Networking — Unity Netcode for GameObjects (NGO 2.12.0)
+- Modelo cliente/servidor onde um jogador assume o papel de **Host** (servidor e cliente simultaneamente) e outro de **Client**, usando `NetworkManager.Singleton.StartHost()` e `NetworkManager.Singleton.StartClient()`
+- `NetworkManager` como componente central de gestão de todas as ligações, com `UnityTransport` como camada de transporte usando o protocolo **UDP**
+- `NetworkObject` e `NetworkBehaviour` para integrar o `GameManager` na rede do NGO, com `OnNetworkSpawn()` para registar eventos de rede
+- `NetworkVariable<int>` com `NetworkVariableWritePermission.Server` para sincronizar o score e o multiplicador de cada jogador, com `OnValueChanged` para atualizar o UI automaticamente
+- `ServerRpc` para transmitir eventos de gameplay do cliente para o servidor, incluindo acertos, falhas e estado de sincronização dos jogadores
+- `ClientRpc` para transmitir eventos do servidor para todos os clientes, incluindo início do jogo, animações, efeitos visuais e ecrã de fim de jogo
+- Split screen com dois lados independentes, cada um com notas, spawn points, `NoteHolder`, `NoteSpawner`, `Activator` e personagem próprios
+- Prefabs de notas separados por jogador com variável `isPlayer1` verificando `NetworkManager.Singleton.IsHost` para garantir que cada jogador só interage com as suas próprias notas
+- `NetworkManager.Singleton.SceneManager.LoadScene()` para carregar cenas de forma sincronizada em todos os clientes
+- `NetworkManager.Singleton.Shutdown()` para terminar corretamente a sessão de rede
+
+### UI
+- `Canvas Scaler` com `Scale With Screen Size` e resolução de referência `1920x1080` para adaptar o UI a diferentes resoluções
+- `NetworkManagerUI` para gerir a lógica do Main Menu com botões de Host e Join, com `InputField` para o IP que só aparece quando o jogador clica em Join
+- Score e multiplicador de cada jogador em `TextMeshProUGUI` separados, atualizados automaticamente pelo `OnValueChanged` das `NetworkVariables`
+- Painel de fim de jogo desativado durante o jogo e ativado via `ClientRpc` quando a música termina, mostrando o score final e o vencedor
+
+## Arquitetura de rede
+
+![Arquitetura de rede](ReadMeImages/ArquiteturaDeRede.png)
