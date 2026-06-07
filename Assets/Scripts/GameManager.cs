@@ -50,6 +50,14 @@ public class GameManager : NetworkBehaviour
     public GameObject perfectEffectP2;
     public GameObject missEffectP2;
 
+    [Header("EndGame Settings")]
+    public GameObject endGamePanel;
+    public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI finalScoreTextP1;
+    public TextMeshProUGUI finalScoreTextP2;
+    public TextMeshProUGUI winnerText;
+
+    //Networked Variables
     private NetworkVariable<int> scoreP1 = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> scoreP2 = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> multiplierP1 = new NetworkVariable<int>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
@@ -107,6 +115,12 @@ public class GameManager : NetworkBehaviour
                 playerReady = true;
                 PlayerReadyServerRpc();
             }
+        }
+
+        if (startPlaying && !theMusic.isPlaying)
+        {
+            startPlaying = false;
+            ShowEndGameClientRpc(scoreP1.Value, scoreP2.Value);
         }
     }
 
@@ -179,6 +193,21 @@ public class GameManager : NetworkBehaviour
 
         if (effect != null)
             Instantiate(effect, position, Quaternion.identity);
+    }
+
+    [ClientRpc]
+    public void ShowEndGameClientRpc(int finalScoreP1, int finalScoreP2)
+    {
+        endGamePanel.SetActive(true);
+        finalScoreTextP1.text = "Player 1 Score: " + finalScoreP1;
+        finalScoreTextP2.text = "Player 2 Score: " + finalScoreP2;
+
+        if (finalScoreP1 > finalScoreP2)
+            winnerText.text = "Player 1 Wins!";
+        else if (finalScoreP2 > finalScoreP1)
+            winnerText.text = "Player 2 Wins!";
+        else
+            winnerText.text = "It's a Draw!";
     }
 
     public void NoteHit(bool isHost)
